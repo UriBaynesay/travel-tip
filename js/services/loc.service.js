@@ -36,11 +36,12 @@ function getLocs() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(locs);
-    }, 2000);
+    }, 1000);
   });
 }
 
 function deleteLoc(locId){
   locs.splice(locs.findIndex(loc=>loc.id=locId),1);
   storageService.save(LOCATION_KEY,locs);
+  renderLocations()
 }

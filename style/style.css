@@ -77,16 +77,17 @@ input{
 .locations-table{
     background-color: #34568B;
     height: 49%;
-    /* margin-top: 5px; */
     padding: 5px;
 }
 
 .places-list{
     list-style: none;
+   
 }
 
 .place{
     border: 1px solid black;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 5px;
 }
