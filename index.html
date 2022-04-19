@@ -11,8 +11,10 @@
     <div class="search-container">
         <h1 class="app-logo">TravelTip Starter</h1>
         <div class="input-container">
-            <input type="text" >
-            <button>GO</button>
+            <form onsubmit="onSearchLoc(event)">
+                <input type="text" >
+                <button>GO</button>
+            </form>
             <button onclick="onMyLocation()" >My Location</button>
         </div>
     </div>      
