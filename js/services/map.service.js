@@ -27,7 +27,7 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
             const place = prompt('enter place name')
             addMarker({lat,lng},place)
            locService.createLoc(place, lat, lng)
-            console.log(lat,lng,place)
+            renderLocations()
         });
         })
 }

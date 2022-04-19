@@ -66,8 +66,8 @@ function renderLocations(){
                 <li class="place">
                     ${location.name}
                  <div class="place-btns">
-                <button onclick="onGoLoc(location.lat,location.lng)">Go</button>
-                <button onclick="onDeleteLoc(location.locId)">Delete</button>
+                <button onclick="onGoLoc(${location.lat},${location.lng})">Go</button>
+                <button onclick="onDeleteLoc(${location.locId})">Delete</button>
                 </div>
                 </li>`
     )
