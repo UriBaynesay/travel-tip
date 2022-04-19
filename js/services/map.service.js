@@ -3,7 +3,7 @@
 export const mapService = {
     initMap,
     addMarker,
-    panTo
+    panTo,
 }
 
 var gMap;
@@ -19,6 +19,12 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                 zoom: 15
             })
             console.log('Map!', gMap);
+        // click on map display user cord
+        gMap.addListener("click", (mapsMouseEvent) => {
+            const {lat,lng} = mapsMouseEvent.latLng.toJSON()
+            console.log(lat,lng)
+        });
+
         })
 }
 
@@ -35,8 +41,6 @@ function panTo(lat, lng) {
     var laLatLng = new google.maps.LatLng(lat, lng);
     gMap.panTo(laLatLng);
 }
-
-
 
 function _connectGoogleApi() {
     if (window.google) return Promise.resolve()
