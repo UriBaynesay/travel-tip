@@ -43,4 +43,5 @@ function getLocs() {
 function deleteLoc(locId){
   locs.splice(locs.findIndex(loc=>loc.id=locId),1);
   storageService.save(LOCATION_KEY,locs);
+  renderLocations()
 }
