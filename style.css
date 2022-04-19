@@ -12,6 +12,21 @@ body{
     margin-top: 10%
 }
 
+button {
+    border: none;
+    color: black;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+input{
+    padding: 5px;
+}
+
 .app-container{
     display: flex;
     flex-wrap: wrap;
@@ -25,12 +40,14 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 2%;
 }
 
 .current-location-container{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin: 2%;
 }
 
 .map-container{
@@ -47,15 +64,29 @@ body{
 
 .locations-container{
   width: 40%;
+  height: 100%;
+
 }
 
 .weather-container{
-    border: 1px solid rgb(83, 9, 219);
     height: 50%;
+    background-color: rgb(234, 240, 245);
+    margin-bottom: 5px;
 }
 
 .locations-table{
+    background-color: #34568B;
+    height: 49%;
+    /* margin-top: 5px; */
+    padding: 5px;
+}
 
-    border: 1px solid rgb(227, 8, 8);
-    height: 50%;
+.places-list{
+    list-style: none;
+}
+
+.place{
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
 }
