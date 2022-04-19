@@ -9,6 +9,7 @@ window.onGetUserPos = onGetUserPos;
 window.onGoLoc=onGoLoc;
 window.onDeleteLoc=onDeleteLoc;
 window.onMyLocation=onMyLocation;
+window.renderLocations = renderLocations;
 
 function onInit() {
     mapService.initMap()
@@ -53,6 +54,19 @@ function onGetUserPos() {
 function onPanTo() {
     console.log('Panning the Map');
     mapService.panTo(35.6895, 139.6917);
+}
+
+function renderLocations(){
+    
+    const list = document.querySelector('.places-list')
+    list.innerHTML = `    
+    <li class="place">
+       Location
+    <div class="place-btns">
+    <button onclick="onGoLoc(lat,lng)">Go</button>
+    <button onclick="onDeleteLoc(locId)">Delete</button>
+    </div>
+    </li>`
 }
 
 function onGoLoc(lat,lng){
