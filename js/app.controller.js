@@ -13,12 +13,13 @@ window.renderLocations = renderLocations;
 window.onSearchLoc = onSearchLoc;
 
 function onInit() {
-    mapService.initMap()
-        .then(() => {
-            console.log('Map is ready');
-            renderLocations()
-        })
-        .catch(() => console.log('Error: cannot init map'));
+  mapService
+    .initMap()
+    .then(() => {
+      console.log("Map is ready");
+      renderLocations();
+    })
+    .catch(() => console.log("Error: cannot init map"));
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -35,11 +36,10 @@ function onAddMarker() {
 }
 
 function onGetLocs() {
-    locService.getLocs()
-        .then(locs => {
-            console.log('Locations:', locs)
-           // document.querySelector('.locs').innerText = JSON.stringify(locs)
-        })
+  locService.getLocs().then((locs) => {
+    console.log("Locations:", locs);
+    // document.querySelector('.locs').innerText = JSON.stringify(locs)
+  });
 }
 
 function onGetUserPos() {
@@ -59,12 +59,12 @@ function onPanTo() {
   mapService.panTo(35.6895, 139.6917);
 }
 
-function renderLocations(){
-    const list = document.querySelector('.places-list')
-    locService.getLocs()
-        .then(res => {
-            let htmlStr = ''
-            htmlStr = res.map(location =>  `    
+function renderLocations() {
+  const list = document.querySelector(".places-list");
+  locService.getLocs().then((res) => {
+    let htmlStr = "";
+    htmlStr = res.map(
+      (location) => `    
                 <li class="place">
                     ${location.name}
                  <div class="place-btns">
@@ -72,10 +72,9 @@ function renderLocations(){
                 <button onclick="onDeleteLoc(${location.locId})">Delete</button>
                 </div>
                 </li>`
-    )
-    list.innerHTML = htmlStr.join('')      
-    }
-    )
+    );
+    list.innerHTML = htmlStr.join("");
+  });
 }
 
 function onGoLoc(lat, lng) {
@@ -100,7 +99,16 @@ function onSearchLoc(ev) {
   mapService
     .getLocCoords(elInput.value)
     .then((res) => {
-      onGoLoc(res.results[0].geometry.location.lat(),res.results[0].geometry.location.lng());
+      locService.createLoc(
+        elInput.value,
+        res.results[0].geometry.location.lat(),
+        res.results[0].geometry.location.lng()
+      );
+      onGoLoc(
+        res.results[0].geometry.location.lat(),
+        res.results[0].geometry.location.lng()
+      );
+      renderLocations();
     })
-    .catch(console.log)
+    .catch(console.log);
 }
