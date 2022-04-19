@@ -8,6 +8,7 @@ window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
 window.onGoLoc=onGoLoc;
 window.onDeleteLoc=onDeleteLoc;
+window.onMyLocation=onMyLocation;
 
 function onInit() {
     mapService.initMap()
@@ -61,4 +62,11 @@ function onGoLoc(lat,lng){
 
 function onDeleteLoc(locId){
     locService.deleteLoc(locId);
+}
+
+function onMyLocation(){
+    getPosition()
+    .then(res=>onGoLoc(res.coords.latitude,res.coords.longitude))
+    // .then(console.log)
+    .catch(console.log)
 }
