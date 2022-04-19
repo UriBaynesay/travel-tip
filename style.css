@@ -32,3 +32,30 @@ body{
     display: flex;
     justify-content: space-between;
 }
+
+.map-container{
+    width: 100%;
+    display: flex;
+    margin: 5px;
+    padding: 20px;
+   
+}
+
+#map{
+    margin-left: 20px;
+}
+
+.locations-container{
+  width: 40%;
+}
+
+.weather-container{
+    border: 1px solid rgb(83, 9, 219);
+    height: 50%;
+}
+
+.locations-table{
+
+    border: 1px solid rgb(227, 8, 8);
+    height: 50%;
+}
