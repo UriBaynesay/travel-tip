@@ -1,5 +1,4 @@
 
-
 export const mapService = {
     initMap,
     addMarker,
@@ -23,18 +22,18 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
         // click on map display user cord
         gMap.addListener("click", (mapsMouseEvent) => {
             const {lat,lng} = mapsMouseEvent.latLng.toJSON()
-            addMarker({ lat: lat, lng:lng})
             const place = prompt('enter place name')
+            addMarker({ lat: lat, lng:lng},place)
             console.log(lat,lng,place)
         });
         })
 }
 
-function addMarker(loc) {
+function addMarker(loc,title='Your Location') {
     var marker = new google.maps.Marker({
         position: loc,
         map: gMap,
-        title: 'Hello World!'
+        title
     });
     return marker;
 }

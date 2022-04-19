@@ -17,13 +17,13 @@ const locs = storageService.load(LOCATION_KEY)
 
 // createLoc("home", 32.047104, 34.832384, "")
 
-function createLoc(name, lat, lng, weather) {
+function createLoc(name, lat, lng) {
     const loc={
         id: utils.makeId(),
         name,
         lat,
         lng,
-        weather,
+        // weather,
         createdAt: Date.now(),
         updatedAt: Date.now(),
       }
@@ -38,4 +38,9 @@ function getLocs() {
       resolve(locs);
     }, 2000);
   });
+}
+
+function deleteLoc(locId){
+  locs.splice(locs.findIdx(loc=>loc.id=locId),1);
+  storageService.save(LOCATION_KEY,locs);
 }
