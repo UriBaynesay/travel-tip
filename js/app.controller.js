@@ -15,6 +15,7 @@ function onInit() {
     mapService.initMap()
         .then(() => {
             console.log('Map is ready');
+            renderLocations()
         })
         .catch(() => console.log('Error: cannot init map'));
 }
@@ -36,7 +37,7 @@ function onGetLocs() {
     locService.getLocs()
         .then(locs => {
             console.log('Locations:', locs)
-            document.querySelector('.locs').innerText = JSON.stringify(locs)
+           // document.querySelector('.locs').innerText = JSON.stringify(locs)
         })
 }
 
@@ -57,16 +58,22 @@ function onPanTo() {
 }
 
 function renderLocations(){
-    
     const list = document.querySelector('.places-list')
-    list.innerHTML = `    
-    <li class="place">
-       Location
-    <div class="place-btns">
-    <button onclick="onGoLoc(lat,lng)">Go</button>
-    <button onclick="onDeleteLoc(locId)">Delete</button>
-    </div>
-    </li>`
+    locService.getLocs()
+        .then(res => {
+            let htmlStr = ''
+            htmlStr = res.map(location =>  `    
+                <li class="place">
+                    ${location.name}
+                 <div class="place-btns">
+                <button onclick="onGoLoc(location.lat,location.lng)">Go</button>
+                <button onclick="onDeleteLoc(location.locId)">Delete</button>
+                </div>
+                </li>`
+    )
+    list.innerHTML = htmlStr.join('')      
+    }
+    )
 }
 
 function onGoLoc(lat,lng){
