@@ -19,12 +19,14 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                 zoom: 15
             })
             console.log('Map!', gMap);
+
         // click on map display user cord
         gMap.addListener("click", (mapsMouseEvent) => {
             const {lat,lng} = mapsMouseEvent.latLng.toJSON()
             addMarker({ lat: lat, lng:lng})
+            const place = prompt('enter place name')
+            console.log(lat,lng,place)
         });
-
         })
 }
 
