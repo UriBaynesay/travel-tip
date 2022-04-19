@@ -5,15 +5,18 @@ export const mapService = {
     initMap,
     addMarker,
     panTo,
+    getLocCoords
 }
 
 var gMap;
+var geocoder;
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
     return _connectGoogleApi()
         .then(() => {
             console.log('google available');
+            geocoder = new google.maps.Geocoder();
             gMap = new google.maps.Map(
                 document.querySelector('#map'), {
                 center: { lat, lng },
@@ -59,4 +62,8 @@ function _connectGoogleApi() {
         elGoogleApi.onload = resolve;
         elGoogleApi.onerror = () => reject('Google script failed to load')
     })
+}
+
+function getLocCoords(search){
+    return geocoder.geocode({address:search});
 }
