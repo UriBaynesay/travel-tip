@@ -1,4 +1,5 @@
 
+import {locService} from './loc.service.js'
 
 export const mapService = {
     initMap,
@@ -25,6 +26,7 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
             const {lat,lng} = mapsMouseEvent.latLng.toJSON()
             addMarker({ lat: lat, lng:lng})
             const place = prompt('enter place name')
+           locService.createLoc(place, lat, lng)
             console.log(lat,lng,place)
         });
         })
