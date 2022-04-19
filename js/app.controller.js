@@ -36,8 +36,7 @@ function onAddMarker() {
 function onGetLocs() {
     locService.getLocs()
         .then(locs => {
-            console.log('Locations:', locs)
-           // document.querySelector('.locs').innerText = JSON.stringify(locs)
+            console.log('Locations:', locs)  
         })
 }
 
@@ -72,8 +71,8 @@ function renderLocations(){
                 </li>`
     )
     list.innerHTML = htmlStr.join('')      
-    }
-    )
+   }
+)
 }
 
 function onGoLoc(lat,lng){
@@ -88,6 +87,7 @@ function onDeleteLoc(locId){
 function onMyLocation(){
     getPosition()
     .then(res=>onGoLoc(res.coords.latitude,res.coords.longitude))
-    // .then(console.log)
+    .then(console.log)
     .catch(console.log)
 }
+
