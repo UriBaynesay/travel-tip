@@ -24,7 +24,6 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
         // click on map display user cord
         gMap.addListener("click", (mapsMouseEvent) => {
             const {lat,lng} = mapsMouseEvent.latLng.toJSON()
-            addMarker({ lat: lat, lng:lng})
             const place = prompt('enter place name')
            locService.createLoc(place, lat, lng)
             console.log(lat,lng,place)
@@ -32,11 +31,11 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
         })
 }
 
-function addMarker(loc) {
+function addMarker(loc,title='Your Location') {
     var marker = new google.maps.Marker({
         position: loc,
         map: gMap,
-        title: 'Hello World!'
+        title
     });
     return marker;
 }
